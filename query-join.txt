@@ -18,7 +18,7 @@ Neuroscienze
 Neuroscienze';
 
 3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
-    SELECT `teachers`.`id`, `courses`.`name`, `courses`.`description`,`courses`.`period`
+    SELECT `teachers`.`id`, `courses`.`name` AS `corsi_del_prof_Amato`,`courses`.`period`
     FROM `courses`
     JOIN `course_teacher`
     ON `course_teacher`.`course_id` = `courses`.`id`
@@ -29,6 +29,13 @@ Neuroscienze';
 4. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui
 sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e
 nome
+    SELECT `students`.`surname`,students`.`name`,`degrees`.`name` AS `corso_di_laurea`, `departements`.`name` AS `dipartimento`
+    FROM `students`
+    JOIN `degrees`
+    ON `degrees`.`id` = `students`.`degree_id`;
+    JOIN `departements`
+    ON `degrees`.`departement_id` = `departements`.`id`
+    ORDER BY `students`.`surname` ASC,`students`.`name` ASC;
 
 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
 6. Selezionare tutti i docenti che insegnano nel Dipartimento di
